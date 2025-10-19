@@ -22,8 +22,8 @@ var (
 
 type fileInfo struct {
 	name string
-	// filetype filetype
 	stat os.FileInfo
+	// filetype filetype
 }
 
 func main() {
@@ -45,7 +45,9 @@ func exec(opts *opts, files []string) {
 			panic("Not Implemmented")
 		}
 	} else {
-		panic("Not Implemmented.")
+		for _, file := range files {
+			globFiles(file)
+		}
 	}
 
 	if len(cwdFiles) > 0 {
@@ -53,7 +55,9 @@ func exec(opts *opts, files []string) {
 	}
 
 	for _, file := range sortedFiles {
-		fmt.Fprintln(os.Stdout, file.stat.Name())
+		if file.stat != nil {
+			fmt.Fprintln(os.Stdout, file.stat.Name())
+		}
 	}
 }
 
