@@ -77,7 +77,7 @@ func globFiles(name string) {
 
 	stat, err := os.Lstat(name)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "%q: No such file or directory", name)
+		fmt.Fprintf(os.Stderr, "%q: No such file or directory\n", name)
 	}
 	f.stat = stat
 
